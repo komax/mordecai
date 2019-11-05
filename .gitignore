@@ -5,9 +5,10 @@
 *.bin.gz
 *.tar.bz2
 *data/MITIE-models
-*.ipynb
+#*.ipynb # don't skip jupyter notebooks.
 .cache
 mordecai/.cache
 build/
 dist/
 mordecai.egg-info
+.vscode/
