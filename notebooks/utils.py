@@ -20,5 +20,5 @@ def extract_geolocation(geocoded_result):
     return computed_latitude, computed_longitude
 
 
-def calc_geodesic_distance(computed_coordinates, expected_coordinates):
+def geodesic_distance(computed_coordinates, expected_coordinates):
     return distance.distance(computed_coordinates, expected_coordinates).meters
