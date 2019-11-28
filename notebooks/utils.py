@@ -10,15 +10,16 @@ def geoparse_text(text):
 
 def extract_geolocation(geocoded_result):
     if not geocoded_result:
-        return None
+        return ()
     
-    first_entry = next(iter(geocoded_result))
-
-    geo_obj = first_entry['geo']
-    computed_latitude = float(geo_obj['lat'])
-    computed_longitude = float(geo_obj['lon'])
-    return computed_latitude, computed_longitude
+    for entry in geocoded_result:
+        if 'geo' in entry:
+            geo_obj = entry['geo']
+            computed_latitude = float(geo_obj['lat'])
+            computed_longitude = float(geo_obj['lon'])
+            return computed_latitude, computed_longitude
+    return ()
 
 
 def geodesic_distance(computed_coordinates, expected_coordinates):
-    return distance.distance(computed_coordinates, expected_coordinates).meters
+    return distance.distance(computed_coordinates, expected_coordinates).km
